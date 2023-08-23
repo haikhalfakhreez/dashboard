@@ -4,7 +4,6 @@ import "handsontable/dist/handsontable.full.min.css"
 import "./data-table.css"
 
 import * as React from "react"
-import Link from "next/link"
 import { HotTable, HotTableProps } from "@handsontable/react"
 import { Namespace } from "@prisma/client"
 import { CheckIcon, Cross2Icon, UpdateIcon } from "@radix-ui/react-icons"
@@ -16,7 +15,6 @@ import { TranslationTableData } from "@/lib/schema"
 import { Button } from "@/components/ui/button"
 import { CommandNote } from "@/components/command-note"
 import { NoTranslations } from "@/components/no-translations"
-import { SelectNamespaces } from "@/components/select-namespaces"
 
 registerAllModules()
 
@@ -63,12 +61,12 @@ export default function DataTable({
   }, [save])
 
   if (data.length === 0) {
-    return <NoTranslations namespaceId={namespaceId} namespaces={namespaces} />
+    return <NoTranslations />
   }
 
   return (
     <div className="datatableContainer">
-      <div className="mb-4 flex items-center justify-between gap-2">
+      <div className="sticky top-10 z-[200] flex items-center justify-between gap-2 border-b bg-white py-2">
         <SaveIndicator hasChanges={hasChanges} isSaving={isPending} />
 
         <div className="flex items-center gap-4">
@@ -85,8 +83,6 @@ export default function DataTable({
 
           <Stats data={data} />
         </div>
-
-        <SelectNamespaces namespaces={namespaces} namespaceId={namespaceId} />
       </div>
 
       <HotTable

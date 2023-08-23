@@ -54,11 +54,20 @@ export const createNamespace = cache(
 export const deleteNamespace = cache(
   async (id: number): Promise<ActionResponse<Namespace>> => {
     try {
-      const namespace = await prisma.namespace.delete({
-        where: {
-          id,
-        },
+      const namespace = await prisma.$transaction(async (tx) => {
+        await tx.translation.deleteMany({
+          where: {
+            namespaceId: id,
+          },
+        })
+
+        return await tx.namespace.delete({
+          where: {
+            id,
+          },
+        })
       })
+
       revalidatePath("/translations")
       return {
         success: true,

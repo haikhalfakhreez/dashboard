@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { usePathname, useRouter } from "next/navigation"
 import { Namespace } from "@prisma/client"
 import { PlusCircledIcon, PlusIcon } from "@radix-ui/react-icons"
 
@@ -33,12 +34,17 @@ export function UploadTranslationsDialog({
 }: {
   namespaces: Namespace[]
 }) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const currentNamespaceId = pathname.split("/").pop()
   const { toast } = useToast()
   const [isPending, startTransition] = React.useTransition()
   const [isNamespacePending, startNamespaceTransition] = React.useTransition()
   const [open, setOpen] = React.useState(false)
   const [showNamespace, setShowNamespace] = React.useState(false)
-  const [namespaceId, setNamespaceId] = React.useState<string | undefined>()
+  const [namespaceId, setNamespaceId] = React.useState<string | undefined>(
+    currentNamespaceId
+  )
   const namespaceInputRef = React.useRef<HTMLInputElement>(null)
 
   const handleNamespaceSubmit = React.useCallback(() => {
@@ -118,6 +124,7 @@ export function UploadTranslationsDialog({
 
               if (response.success) {
                 setOpen(false)
+                router.push(`/translations/namespace/${response.data.id}`)
                 return
               }
 

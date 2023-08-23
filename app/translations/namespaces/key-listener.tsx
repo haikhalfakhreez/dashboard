@@ -41,6 +41,11 @@ export function KeyListener() {
           }
         }
         addNamespace()
+        return
+      }
+
+      if (e.key === "Enter") {
+        e.preventDefault()
       }
     }
 

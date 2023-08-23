@@ -80,6 +80,14 @@ export function SelectNamespaces({
           )}
         </RadioTabs>
       )}
+
+      <Button
+        size="xs"
+        variant="outline"
+        onClick={() => router.push("/translations/namespaces")}
+      >
+        Manage
+      </Button>
     </div>
   )
 }

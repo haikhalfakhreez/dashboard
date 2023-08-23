@@ -74,10 +74,17 @@ export function UploadTranslationsForm() {
       delete newState[code]
       return newState
     })
+
+    const input = document.getElementById(code)
+
+    if (input && input instanceof HTMLInputElement) {
+      input.value = ""
+    }
   }, [])
 
   return (
     <div className="space-y-1">
+      <pre className="text-2xs">{JSON.stringify(state, null, 2)}</pre>
       <Label className="text-xs">JSON</Label>
 
       <div className="space-y-3">
@@ -145,9 +152,9 @@ export function UploadTranslationsForm() {
               </div>
 
               <input
-                id={item.code}
                 type="file"
                 className="hidden"
+                id={`file-${item.code}`}
                 name={`file-${item.code}`}
                 onChange={(e) => handleFileUpload(e, item.code)}
                 disabled={hasValue}
@@ -155,6 +162,7 @@ export function UploadTranslationsForm() {
               <input
                 type="text"
                 className="hidden"
+                id={item.code}
                 name={item.code}
                 value={value}
               />

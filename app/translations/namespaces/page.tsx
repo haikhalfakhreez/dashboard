@@ -31,7 +31,12 @@ export default async function Page() {
 
       <form id="add-namespace" className="mb-4 flex">
         <div className="flex items-center gap-2">
-          <Input name="name" placeholder="Add Namespace" className="text-xs" />
+          <Input
+            name="name"
+            placeholder="Add Namespace"
+            className="text-xs"
+            autoFocus
+          />
 
           <CommandNote value="⏎" text="to add" />
 
