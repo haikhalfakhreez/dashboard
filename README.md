@@ -24,12 +24,12 @@ This project serve to automate and simplify my workflow. It will also act as an 
 
 ## Roadmap
 
-- [x] GPT-4 chat integration using OpenAI API and [Vercel AI SDK](https://vercel.com/blog/introducing-the-vercel-ai-sdk)
-- [x] Authentication using NextAuth
-- [x] Move database to NoSQL (MongoDB) & MySQL (PlanetScale)
-- [x] Responsive style
-- [x] Add OG image and metadata
-- [x] Dark mode
+- [ ] GPT-4 chat integration using OpenAI API and [Vercel AI SDK](https://vercel.com/blog/introducing-the-vercel-ai-sdk)
+- [ ] Authentication using NextAuth
+- [ ] Move database to NoSQL (MongoDB) & MySQL (PlanetScale)
+- [ ] Responsive style
+- [ ] Add OG image and metadata
+- [ ] Dark mode
 
 ## Known Issues
 
