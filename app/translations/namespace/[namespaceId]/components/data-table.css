@@ -1,0 +1,27 @@
+.datatable tr th,
+.datatable tr td {
+  @apply !border-border;
+}
+
+.datatable thead th {
+  @apply h-8 bg-gray-100 text-center align-middle font-medium;
+}
+
+/* Index column */
+.datatable tbody tr th {
+  @apply bg-gray-50 text-center align-middle font-mono text-2xs tabular-nums text-muted-foreground;
+}
+
+/* Key column */
+.datatable tbody tr td:first-of-type {
+  @apply bg-gray-50 font-mono text-2xs font-medium text-muted-foreground;
+}
+
+/* All cells, except index */
+.datatable tbody tr td {
+  @apply break-all p-2;
+}
+
+.datatableContainer .ht_master .wtHolder {
+  @apply overscroll-x-contain;
+}
