@@ -4,7 +4,7 @@ A collection of tools to automate and simplify my workflow.
 Built using the new Next.js 13 App router, React Server Component, and Server Actions.
 Open source.
 
-> **PSA**
+> **Warning**
 > This app is a work in progress. I'll be adding new features and fixing bugs as I go.
 > See the roadmap below.
 
@@ -14,17 +14,17 @@ This project serve to automate and simplify my workflow. It will also act as an 
 
 ## Features
 
-- New `/app` router
-- UI Components from **shadcn/ui**
+- New `/app` router from [**Next.js**](https://nextjs.org/)
+- UI Components from [**shadcn/ui**](https://ui.shadcn.com/)
 - Server Actions
-- ORM using **Prisma**
+- ORM using [**Prisma**](https://www.prisma.io/)
 - Database using **SQLite**
 - Server and Client Components
-- Prettier import autosort
+- Prettier import autosort [**@ianvs/prettier-plugin-sort-imports**](https://github.com/IanVS/prettier-plugin-sort-imports)
 
 ## Roadmap
 
-- [x] GPT-4 chat integration using OpenAI API and Vercel AI sdk
+- [x] GPT-4 chat integration using OpenAI API and [Vercel AI SDK](https://vercel.com/blog/introducing-the-vercel-ai-sdk)
 - [x] Authentication using NextAuth
 - [x] Move database to NoSQL (MongoDB) & MySQL (PlanetScale)
 - [x] Responsive style
@@ -33,7 +33,7 @@ This project serve to automate and simplify my workflow. It will also act as an 
 
 ## Known Issues
 
-1. `handsontable` typescript definitions are not working. Need to manually patch from node_modules.
+1. `handsontable` typescript definitions are not working. Need to manually patch from `node_modules`.
 2. `adm-zip` is giving build warnings, but it doesn't break the build.
 
 ## Running Locally
