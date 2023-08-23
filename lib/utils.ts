@@ -8,3 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 export function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
+
+export function getNamespaceId(namespaceId: string | string[] | undefined) {
+  if (typeof namespaceId === "string") {
+    return parseInt(namespaceId, 10)
+  }
+
+  return undefined
+}

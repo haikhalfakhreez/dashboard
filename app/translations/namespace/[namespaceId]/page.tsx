@@ -2,8 +2,7 @@ import dynamic from "next/dynamic"
 import { notFound } from "next/navigation"
 
 import { getNamespaces, getTranslations } from "@/lib/api"
-
-import { getNamespaceId } from "./layout"
+import { getNamespaceId } from "@/lib/utils"
 
 const DataTable = dynamic(() => import("./components/data-table"), {
   ssr: false,
@@ -25,11 +24,6 @@ export default async function Page({
   const { colHeaders, data } = await getTranslations(namespaceId)
 
   return (
-    <DataTable
-      colHeaders={colHeaders}
-      data={data}
-      namespaces={namespaces}
-      namespaceId={namespaceId}
-    />
+    <DataTable colHeaders={colHeaders} data={data} namespaceId={namespaceId} />
   )
 }

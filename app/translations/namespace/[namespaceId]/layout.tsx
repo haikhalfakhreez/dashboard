@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 
 import { getNamespaces, getTranslations } from "@/lib/api"
+import { getNamespaceId } from "@/lib/utils"
 import { ExportTranslations } from "@/components/export-translations"
 import { SelectNamespaces } from "@/components/select-namespaces"
 import { TranslationsHeader } from "@/components/translations-header"
@@ -39,12 +40,4 @@ export default async function Layout({
       {children}
     </>
   )
-}
-
-export function getNamespaceId(namespaceId: string | string[] | undefined) {
-  if (typeof namespaceId === "string") {
-    return parseInt(namespaceId, 10)
-  }
-
-  return undefined
 }

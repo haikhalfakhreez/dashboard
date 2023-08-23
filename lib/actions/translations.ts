@@ -9,46 +9,57 @@ import { ActionResponse } from "@/lib/actions/types"
 import { prisma } from "@/lib/prisma"
 import { TranslationTableData } from "@/lib/schema"
 
-export async function saveTranslations({
-  namespaceId,
-  data,
-}: {
-  namespaceId: number
-  data: TranslationTableData
-}) {
-  try {
-    await prisma.$transaction(
-      data.map((item) => {
-        const [translationId, key, en, id, th, vn] = item
-        return prisma.translation.update({
-          where: { translationId },
-          data: {
-            key,
-            en,
-            id,
-            th,
-            vn,
-          },
+type TranslationResponse = Promise<
+  ActionResponse<{
+    id: number
+  }>
+>
+
+export const saveTranslations = cache(
+  async ({
+    namespaceId,
+    data,
+  }: {
+    namespaceId: number
+    data: TranslationTableData
+  }): TranslationResponse => {
+    try {
+      await prisma.$transaction(
+        data.map((item) => {
+          const [translationId, key, en, id, th, vn] = item
+          return prisma.translation.update({
+            where: { translationId },
+            data: {
+              key,
+              en,
+              id,
+              th,
+              vn,
+            },
+          })
         })
-      })
-    )
-    return true
-  } catch (error) {
-    console.error("Error saving translations:", error)
-    return false
+      )
+      return {
+        success: true,
+        data: {
+          id: namespaceId,
+        },
+      }
+    } catch (error) {
+      console.error("Error saving translations:", error)
+
+      return {
+        success: false,
+        message: "Something went wrong. Please check the console for details.",
+      }
+    }
   }
-}
+)
 
 type TranslationObject = Omit<Translation, "translationId">
 
 export const uploadTranslations = cache(
-  async (
-    formData: FormData
-  ): Promise<
-    ActionResponse<{
-      id: number
-    }>
-  > => {
+  async (formData: FormData): TranslationResponse => {
     try {
       const namespaceId = formData.get("namespace")
       const en = formData.get("en")

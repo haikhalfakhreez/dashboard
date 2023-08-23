@@ -5,7 +5,6 @@ import "./data-table.css"
 
 import * as React from "react"
 import { HotTable, HotTableProps } from "@handsontable/react"
-import { Namespace } from "@prisma/client"
 import { CheckIcon, Cross2Icon, UpdateIcon } from "@radix-ui/react-icons"
 import { registerAllModules } from "handsontable/registry"
 
@@ -21,12 +20,10 @@ registerAllModules()
 export default function DataTable({
   colHeaders,
   data,
-  namespaces,
   namespaceId,
 }: {
   colHeaders: HotTableProps["colHeaders"]
   data: TranslationTableData
-  namespaces: Namespace[]
   namespaceId: number
 }) {
   const [isPending, startTransition] = React.useTransition()
@@ -38,12 +35,14 @@ export default function DataTable({
     if (isPending) return
     startTransition(async () => {
       const instance = tableRef.current?.hotInstance
-      await saveTranslations({
+      const response = await saveTranslations({
         namespaceId,
         data: instance?.getData() as TranslationTableData,
       })
 
-      setHasChanges(false)
+      if (response.success) {
+        setHasChanges(false)
+      }
     })
   }, [isPending, namespaceId])
 

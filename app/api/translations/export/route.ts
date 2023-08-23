@@ -6,10 +6,7 @@ import { prisma } from "@/lib/prisma"
 
 export async function POST(request: Request) {
   try {
-    console.log("Exporting translations")
-
     const { namespace, namespaceId } = await request.json()
-    console.log(namespace, namespaceId)
 
     const translations = await prisma.translation.findMany({
       where: { namespaceId },
