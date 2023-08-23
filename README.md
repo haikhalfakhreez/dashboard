@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dashboard
 
-## Getting Started
+A collection of tools to automate and simplify my workflow.
+Built using the new Next.js 13 App router, React Server Component, and Server Actions.
+Open source.
 
-First, run the development server:
+> **PSA**
+> This app is a work in progress. I'll be adding new features and fixing bugs as I go.
+> See the roadmap below.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+## About this project
+
+This project serve to automate and simplify my workflow. It will also act as an experiment to see how modern features would work in Next.js 13 and server components.
+
+## Features
+
+- New `/app` router
+- UI Components from **shadcn/ui**
+- Server Actions
+- ORM using **Prisma**
+- Database using **SQLite**
+- Server and Client Components
+- Prettier import autosort
+
+## Roadmap
+
+- [x] GPT-4 chat integration using OpenAI API and Vercel AI sdk
+- [x] Authentication using NextAuth
+- [x] Move database to NoSQL (MongoDB) & MySQL (PlanetScale)
+- [x] Responsive style
+- [x] Add OG image and metadata
+- [x] Dark mode
+
+## Known Issues
+
+1. `handsontable` typescript definitions are not working. Need to manually patch from node_modules.
+2. `adm-zip` is giving build warnings, but it doesn't break the build.
+
+## Running Locally
+
+1. Install dependencies using pnpm:
+
+```sh
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Patch `handsontable` and `@handsontable/react` typescript definitions:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm postinstall
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Copy `.env.example` to `.env` and update the variables.
 
-## Learn More
+```sh
+cp .env.example .env
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+pnpm dev
+```
