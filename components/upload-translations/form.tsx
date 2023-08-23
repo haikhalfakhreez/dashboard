@@ -84,7 +84,6 @@ export function UploadTranslationsForm() {
 
   return (
     <div className="space-y-1">
-      <pre className="text-2xs">{JSON.stringify(state, null, 2)}</pre>
       <Label className="text-xs">JSON</Label>
 
       <div className="space-y-3">
@@ -124,7 +123,7 @@ export function UploadTranslationsForm() {
                 ) : (
                   <>
                     <label
-                      htmlFor={item.code}
+                      htmlFor={`file-${item.code}`}
                       className={cn(
                         buttonVariants({
                           variant: "outline",

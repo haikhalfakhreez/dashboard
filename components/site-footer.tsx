@@ -5,7 +5,7 @@ export function SiteFooter() {
         <p className="text-center text-xs leading-loose text-muted-foreground md:text-left">
           Built by{" "}
           <a
-            href={`#`}
+            href={`https://www.haikhalfakhreez.com`}
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
@@ -14,7 +14,7 @@ export function SiteFooter() {
           </a>
           . The source code is available on{" "}
           <a
-            href={`#`}
+            href={`https://github.com/haikhalfakhreez/dashboard`}
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"

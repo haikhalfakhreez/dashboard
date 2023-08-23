@@ -25,7 +25,7 @@ export function MainNav() {
           className={cn(
             "transition-colors hover:text-foreground/80",
             pathname.includes("/translations")
-              ? "text-foreground underline"
+              ? "text-foreground underline underline-offset-2"
               : "text-foreground/60"
           )}
         >

@@ -13,7 +13,11 @@ export function SiteHeader() {
 
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-            <Link href={`#`} target="_blank" rel="noreferrer">
+            <Link
+              href={`https://github.com/haikhalfakhreez`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <div
                 className={cn(
                   buttonVariants({
@@ -26,7 +30,11 @@ export function SiteHeader() {
                 <span className="sr-only">GitHub</span>
               </div>
             </Link>
-            <Link href={`#`} target="_blank" rel="noreferrer">
+            <Link
+              href={`https://www.linkedin.com/in/haikhalfakhreez`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <div
                 className={cn(
                   buttonVariants({
@@ -35,8 +43,8 @@ export function SiteHeader() {
                   "h-8 w-8 p-0"
                 )}
               >
-                <Icons.twitter className="h-4 w-4 fill-current" />
-                <span className="sr-only">Twitter</span>
+                <Icons.linkedIn className="h-4 w-4 fill-current" />
+                <span className="sr-only">LinkedIn</span>
               </div>
             </Link>
           </nav>

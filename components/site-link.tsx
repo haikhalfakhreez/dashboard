@@ -11,7 +11,7 @@ export const SiteLink = React.forwardRef<
     {...props}
     ref={ref}
     className={cn(
-      "text-sm underline transition-colors hover:text-muted-foreground",
+      "text-sm underline underline-offset-4 transition-colors hover:text-muted-foreground",
       className
     )}
   />
